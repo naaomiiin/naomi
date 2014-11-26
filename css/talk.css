@@ -1,4 +1,16 @@
 @charset "UTF-8";
+
+#main {
+width:630px; 
+float:right; 
+margin: 0px; 
+} 
+#side {
+width:170px; 
+float:left;
+margin: 0px; 
+}
+
  
  .arrow_answer,
 .arrow_question {
