@@ -1,14 +1,5 @@
 @charset "UTF-8";
 
-body {
-margin:0;
-padding:0;
-border:0;
-width:100%;
-background:#F0F0F0;
-min-width:600px; /* 最小幅 */
-font-size:90%;
-}
  
 .colmask {
 position:relative;
@@ -20,6 +11,9 @@ overflow:hidden;
  
 .rightmenu {
 background:#fccbff; /* 右カラム背景色 */
+background-image: url("dot.gif");
+ background-repeat: repeat;
+ text-align: center;
 }
  
 .rightmenu .colleft {
@@ -29,6 +23,9 @@ margin-left:-200px;
 position:relative;
 right:100%;
 background:#cbe6ff; /* 左カラム背景色 */
+background-image: url("dot1.gif");
+ background-repeat: repeat;
+ text-align: center;
 }
  
 .rightmenu .col1wrap {
@@ -57,19 +54,6 @@ left:185px;
 
 
 
-.box1 {
-　　width:200px;
-　　height:200px;
-　　border:#cccccc solid 1px;
-　　float:left;
-}
-.box2 {
-　　width:228px;
-　　height:200px;
-　　border:#cccccc solid 1px;
-　　float:left;
-}
- 
  .arrow_answer,
 .arrow_question {
     position: relative;
@@ -197,33 +181,18 @@ body{
  margin:0;
  padding:0;
  color:#666;
- background-image: url("dot.gif");
+ background-image: url("dot2.gif");
  background-repeat: repeat;
  text-align: center;
 }
 header{
- width: 700px;
- margin: 0px auto;
- padding: 60px 0px;
+ width: 40px;
+ margin: 0px top;
+ padding: 40px 0px;
  }
- div#container{
-width: 90%;
-}
-div#content{
-width: 70%;
-float: right;
-}
-div#sidebar{
-width: 30%;
-float: left;
-}
 div#header{
 width: 100%;
 margin-top: 70px;
-}
-div#footer{
-clear: both;
-width: 100%;
 }
 p{
  font-size: 120%;
