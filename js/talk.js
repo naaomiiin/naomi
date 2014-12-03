@@ -73,6 +73,6 @@ $("#append-text").click(function(){
 
 $.ajax({
 	type: 'GET',
-	    url: 'http://shower.human.waseda.ac.jp:3300/rating/mn-with-word2vec/replies?text=#input',
+	    url: 'http://shower.human.waseda.ac.jp:3300/rating/mn-with-word2vec/replies?text='.'$("#input")',
 	    dataType: 'html',
 	    });
