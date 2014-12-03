@@ -2,61 +2,42 @@
 
  
 .colmask {
-//position:relative;
-//clear:both;
-//float:left;
-//width:100%; /* ページ全体幅 */
 overflow:hidden;
 }
  
 .rightmenu {
-background:#fccbff; /* 右カラム背景色 */
-background-image: url("dot.gif");
+ background:#fccbff; /* 右カラム背景色 */
+ background-image: url("dot1.gif");
  background-repeat: repeat;
  text-align: center;
 }
  
 .rightmenu .colleft {
-//float:left;
-//width:200%;
-//margin-left:-200px;
-//position:relative;
-//right:100%;
-background:#cbe6ff; /* 左カラム背景色 */
-background-image: url("dot1.gif");
+ background:#cbe6ff; /* 左カラム背景色 */
+ background-image: url("dot1.gif");
  background-repeat: repeat;
  text-align: center;
 }
  
 .rightmenu .col1wrap {
-//float:left;
-//width:50%;
-//position:relative;
-//left:50%;
-padding-bottom:1em;
+// padding-bottom:1em;
 }
  
  
 .rightmenu .col2 {
-border:solid 4px black;
+ border:solid 4px black;
 }
-
 
 
 
  .arrow_answer,
 .arrow_question {
-    //position: relative;
     background: #fff;
     border: 1px solid #c8c8c8;
-   // padding: 20px;
     border-radius: 10px;
-   // width: 55%;
-   // float: right;
 }
-.arrow_question {
-    //float: left;
-}
+
+*/
 .arrow_answer:after,
 .arrow_answer:before,
 .arrow_question:after,
@@ -98,8 +79,10 @@ border:solid 4px black;
     //margin-left: 5px;
     //width: 20%;
 //}
+*/
+
 .quest	ion_Box {
-    margin-bottom: 25px;
+//    margin-bottom: 25px;
     overflow: hidden;.arrow_question
 }
  
@@ -114,6 +97,7 @@ border:solid 4px black;
 //float: left;
 }
 }
+
  
  * {
             box-sizing: border-box;
@@ -126,7 +110,7 @@ border:solid 4px black;
                background: #ccc;
                width: 100px;
                margin-bottom: 20px;
-               padding: 5px;        }
+  //             padding: 5px;        }
 
         .box:before,
         .box:after {
@@ -186,8 +170,8 @@ div#header{
 }
 p{
  font-size: 120%;
- margin: 15px;
+// margin: 15px;
 }
 img{
-margin: 15px;
+// margin: 15px;
 }
