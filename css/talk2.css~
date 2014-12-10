@@ -7,7 +7,7 @@ overflow:hidden;
  
 .rightmenu {
  background:#fccbff; /* 右カラム背景色 */
- background-image: url("dot.gif");
+ background-image: url("dot1.gif");
  background-repeat: repeat;
  text-align: center;
 }
@@ -20,14 +20,13 @@ overflow:hidden;
 }
  
 .rightmenu .col1wrap {
- padding-bottom:1em;
+// padding-bottom:1em;
 }
  
  
 .rightmenu .col2 {
  border:solid 4px black;
 }
-
 
 
 
@@ -83,7 +82,7 @@ overflow:hidden;
 */
 
 .quest	ion_Box {
-    margin-bottom: 25px;
+//    margin-bottom: 25px;
     overflow: hidden;.arrow_question
 }
  
@@ -111,7 +110,7 @@ overflow:hidden;
                background: #ccc;
                width: 100px;
                margin-bottom: 20px;
-               padding: 5px;        }
+  //             padding: 5px;        }
 
         .box:before,
         .box:after {
@@ -171,8 +170,8 @@ div#header{
 }
 p{
  font-size: 120%;
- margin: 15px;
+// margin: 15px;
 }
 img{
-margin: 15px;
+// margin: 15px;
 }

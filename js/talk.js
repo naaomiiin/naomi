@@ -3,7 +3,19 @@ console.log($("#input").val());
 $("#input").val("merci");
 console.log($("#input").val());*/
 
+
 $("#append-text").click(function(){
+	systemReply = "ダミー";
+	console.log($("#input").val());
+	$.ajax({
+		type: 'GET',
+		    url:"http://shower.human.waseda.ac.jp:3300/rating/mn-with-word2vec/replies?text="+$("#input").val(),
+		    async:false,
+		    dataType:"json",
+		    success: function(data){
+		    console.log("成功"+data);
+		    systemReply = data.triple[2].text
+		}});
 
 	$("#history").append('<div class="container">'
 			     +'<div class="row col-sm-10">'
@@ -31,17 +43,6 @@ $("#append-text").click(function(){
 			     +'</div>'<!-- /.row -->
 			     +'</div>'<!-- /.container -->
 			     );
-	$("#input").val("");
-    });
-
-
-//$("#append-text").click(function(){
-//$("#history").load("./http://shower.human.waseda.ac.jp:3300/rating/mn-with-word2vec/replies?text="#input"");
-//   });
-
-
-$("#append-text").click(function(){
-
         $("#history").append('<div class="container">'
                              +'<div class="row col-sm-10">'
                              +'<div class="col1">'
@@ -51,7 +52,8 @@ $("#append-text").click(function(){
                              +'</div>'
                              +'<div class="arrow_answer col-sm-6" style="height:60px">'
                              +'<div id="history">'
-			     // +'$.ajax({type:"GET",url:"http://shower.human.waseda.ac.jp:3300/rating/mn-with-word2vec/replies?text=.$("#input")"})'
+			     +'<br>'
+			     + systemReply
                              +'</div>'<!-- /.history -->
                              +'<div>'
 			     +'<br>'
@@ -67,12 +69,17 @@ $("#append-text").click(function(){
                              +'</div>'<!-- /.row -->
                              +'</div>'<!-- /.container -->
                              );
-        $("#input").val("");
+	$("#input").val("");
     });
 
 
-$.ajax({
-	type: 'GET',
-	    url: 'http://shower.human.waseda.ac.jp:3300/rating/mn-with-word2vec/replies?text='.'$("#input")',
-	    dataType: 'html',
-	    });
+
+
+//$.ajax({
+//type: 'GET',
+//    url: '"http://shower.human.waseda.ac.jp:3300/rating/mn-with-word2vec/replies?text=" + $("#input").val() ',
+//    dataType: 'html',
+//    success: function(data) {
+//    $('#arrow_answer').html($(data));
+//}
+//  });
