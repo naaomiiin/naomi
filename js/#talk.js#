@@ -1,0 +1,155 @@
+/*console.log("’¤³’¤ó’¤Ë’¤Á’¤Ï");
+console.log($("#input").val());
+$("#input").val("merci");
+console.log($("#input").val());*/
+
+//var bigfive = {"bigfive":{"e":"neg"},{"n":"pos"}, {"o":"neg"}, {"a":"pos"}, {"c":"neg"}};
+/* e: ’³°’¸þ’À­, n: ’¿À’·Ð’¾É’·¹’¸þ, o: ’³«’Êü’À­, a: ’¶¨’Ä´’À­, c: ’À¿’¼Â’À­ , pos: ’¥Ý’¥¸’¥Æ’¥£’¥Ö, neg: ’¥Í’¥¬’¥Æ’¥£’¥Ö*/
+
+
+new Chartist.Line('.ct-chart', {
+	labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+	    series: [
+		     {
+			 name: 'Fibonacci sequence',
+			     data: [1, 2, 3, 5, 8, 13, 40, 32, 10, 18]
+			     },
+		     {
+			 name: 'Golden section',
+			     data: [1, 12, 20, 8, 6, 11, 40, 20, 7, 26]
+			     }
+		     ]
+	    });
+
+var easeOutQuad = function (x, t, b, c, d) {
+    return -c * (t /= d) * (t - 2) + b;
+};
+
+var $chart = $('.ct-chart');
+
+var $toolTip = $chart
+    .append('<div class="tooltip"></div>')
+    .find('.tooltip')
+    .hide();
+
+$chart.on('mouseenter', '.ct-point', function() {
+	var $point = $(this),
+	    value = $point.attr('ct:value'),
+	    seriesName = $point.parent().attr('ct:series-name');
+
+	$point.animate({'stroke-width': '50px'}, 300, easeOutQuad);
+	$toolTip.html(seriesName + '<br>' + value).show();
+    });
+
+$chart.on('mouseleave', '.ct-point', function() {
+	var $point = $(this);
+
+	$point.animate({'stroke-width': '20px'}, 300, easeOutQuad);
+	$toolTip.hide();
+    });
+
+$chart.on('mousemove', function(event) {
+	$toolTip.css({
+		left: (event.offsetX || event.originalEvent.layerX) - $toolTip.width() / 2 - 10,
+		    top: (event.offsetY || event.originalEvent.layerY) - $toolTip.height() - 40
+		    });
+    });
+
+
+
+var e_counter=[];
+e_counter.push("Eplus");
+e_counter.push("Eminus");
+for(var i=0;i<8;i++){
+    e_counter.push("Eplus");
+}
+var e_plus_counter=0;
+for(var i=0;i<e_counter.length;i++){
+    if(e_counter[i]==="Eplus"){
+	e_plus_counter++;
+    }
+}
+
+console.log(e_plus_counter);
+
+
+console.log(e_counter);
+
+
+
+$("#append-text").click(function(){
+	systemReply = "’¥À’¥ß’¡¼";
+	console.log($("#input").val());
+	$.ajax({
+		type: 'GET',
+		    url:"http://shower.human.waseda.ac.jp:3300/rating/mn-with-word2vec/replies?text="+$("#input").val(),
+		    async:false,
+		    dataType:"json",
+		    success: function(data){
+		    console.log("’À®’¸ù"+data);
+		    systemReply = data.triple[2].text
+			}});
+			      
+	
+	$("#history").append('<div class="row">'
+                               +'<div class="col-sm-3">'
+                                 +'<img src="./girl.png" alt="’¥æ’¡¼’¥¶’¡¼" class="icon">'
+                               +'</div>'//question_image
+			       +'<div class="arrow_question col-sm-6" style="height:60px";>'
+                                 +'<br>'
+                                 + systemReply
+                               +'</div>'
+			       +'<div class="blank col-sm-3">'
+                               +'</div>'
+                             +'</div>'// row
+                             );
+
+
+        $("#history").append('<div class="row">'
+			       +'<div class="blank col-sm-3">'
+			       +'</div>'
+			       +'<div class="arrow_answer col-sm-6" style="height:60px";>'
+			         +'<br>'
+			         + systemReply
+			       +'</div>'
+			       +'<div class="col-sm-3">'
+			         +'<img src="./pc.png" alt="’¥·’¥¹’¥Æ’¥à" class="icon">'
+			       +'</div>'// answer_image
+			     +'</div>'// row
+                             );
+	
+	$.ajax({
+                type: 'GET',
+                    url:"http://shower.human.waseda.ac.jp:3300/bigfive/"+$("#input").val(),
+                    async:false,
+                    dataType:"json",
+                    success: function(data){
+                      console.log("bigfive’À®’¸ù"+data);
+                      var e_result = data.e.class;
+		    console.log("’³°’¸þ’À­œôöò"+e_result);
+		    var n_result = data.n.class;
+                    console.log("’¿À’·Ð’¾É’·¹’¸þœôöò"+n_result);
+		    var o_result = data.o.class;
+                    console.log("’³«’Êü’À­œôöò"+o_result);
+		    var a_result = data.a.class;
+                    console.log("’¶¨’Ä´’À­œôöò"+a_result);
+		    var c_result = data.c.class;
+                    console.log("’À¿’¼Â’À­œôöò"+c_result);
+		}});
+
+	$("#input").val("");	
+    });
+
+
+
+
+
+
+//$.ajax({
+//type: 'GET',
+//    url: '"http://shower.human.waseda.ac.jp:3300/rating/mn-with-word2vec/replies?text=" + $("#input").val() ',
+//    dataType: 'html',
+//    success: function(data) {
+//    $('#arrow_answer').html($(data));
+//}
+//  });

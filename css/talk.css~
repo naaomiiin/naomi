@@ -2,10 +2,10 @@
 
  
 .colmask {
-position:relative;
-clear:both;
-float:left;
-width:100%; /* ページ全体幅 */
+//position:relative;
+//clear:both;
+//float:left;
+//width:100%; /* ページ全体幅 */
 overflow:hidden;
 }
  
@@ -17,11 +17,11 @@ background-image: url("dot.gif");
 }
  
 .rightmenu .colleft {
-float:left;
-width:200%;
-margin-left:-200px;
-position:relative;
-right:100%;
+//float:left;
+//width:200%;
+//margin-left:-200px;
+//position:relative;
+//right:100%;
 background:#cbe6ff; /* 左カラム背景色 */
 background-image: url("dot1.gif");
  background-repeat: repeat;
@@ -29,43 +29,33 @@ background-image: url("dot1.gif");
 }
  
 .rightmenu .col1wrap {
-float:left;
-width:50%;
-position:relative;
-left:50%;
+//float:left;
+//width:50%;
+//position:relative;
+//left:50%;
 padding-bottom:1em;
 }
  
-.rightmenu .col1 {
-margin:0 15px 0 215px;
-overflow:hidden;
-}
  
 .rightmenu .col2 {
-float:right;
-width:170px;
-position:relative;
-left:185px;
+border:solid 4px black;
 }
-
-
-
 
 
 
 
  .arrow_answer,
 .arrow_question {
-    position: relative;
+    //position: relative;
     background: #fff;
     border: 1px solid #c8c8c8;
-    padding: 20px;
+   // padding: 20px;
     border-radius: 10px;
-    width: 55%;
-    float: right;
+   // width: 55%;
+   // float: right;
 }
 .arrow_question {
-    float: left;
+    //float: left;
 }
 .arrow_answer:after,
 .arrow_answer:before,
@@ -99,29 +89,29 @@ left:185px;
 }
 .arrow_answer:before { border-left-color: #c8c8c8; }
 .arrow_question:before { border-right-color: #c8c8c8; }
-.question_image { float: left;
-                  margin-right; 5px;
-                  width: 20%;
-}
-.answer_image {
-    float: right;
-    margin-left: 5px;
-    width: 20%;
-}
-.question_Box {
+//.question_image { float: left;
+                 // margin-right; 5px;
+                 // width: 20%;
+//}
+//.answer_image {
+    //float: right;
+    //margin-left: 5px;
+    //width: 20%;
+//}
+.quest	ion_Box {
     margin-bottom: 25px;
     overflow: hidden;.arrow_question
 }
  
-.answer_image img{ border-radius: 50px; float: right;}
-.question_image img { border-radius: 50px;}
+//.answer_image img{ border-radius: 50px; float: right;}
+//.question_image img { border-radius: 50px;}
  
 @media only screen and (max-width: 767px) {
 .arrow_question {
-float: right;
+//float: right;
 }
 .arrow_answer {
-float: left;
+//float: left;
 }
 }
  
@@ -178,21 +168,21 @@ float: left;
         }
 
 body{
- margin:0;
- padding:0;
+ //margin:0;
+ //padding:0;
  color:#666;
  background-image: url("dot2.gif");
  background-repeat: repeat;
  text-align: center;
 }
 header{
- width: 40px;
- margin: 0px top;
- padding: 40px 0px;
+ //width: 40px;
+ //margin: 0px top;
+ //padding: 40px 0px;
  }
 div#header{
-width: 100%;
-margin-top: 70px;
+ width: 100%;
+ margin-top: 70px;
 }
 p{
  font-size: 120%;
