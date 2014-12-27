@@ -57,23 +57,55 @@ $chart.on('mousemove', function(event) {
 
 
 
+//var e_counter=[];
+//var n_counter=[];
+//var o_counter=[];
+//var a_counter=[];
+//var c_counter=[];
+
+//e_counter.push(e_result);
+//e_counter.push("Eminus");
+
+//for(var i=0;i<8;i++){
+//    e_counter.push("Eplus");
+//    n_counter.push("Nplus");
+//    o_counter.push("Oplus");
+//    a_counter.push("Aplus");
+//    c_counter.push("Cplus");
+//}
+
+
 var e_counter=[];
-e_counter.push("Eplus");
-e_counter.push("Eminus");
-for(var i=0;i<8;i++){
-    e_counter.push("Eplus");
-}
 var e_plus_counter=0;
+
+e_counter.push(e_result);
+
+
 for(var i=0;i<e_counter.length;i++){
-    if(e_counter[i]==="Eplus"){
-	e_plus_counter++;
+    if(e_counter==="Eplus"){
+        e_plus_counter++;
     }
 }
 
 console.log(e_plus_counter);
 
 
-console.log(e_counter);
+//for(var i=0;i<e_counter.length;i++){
+//    if(e_counter[i]==="Eplus"){
+//e_plus_counter++;
+//  }
+//}
+//for(var i=0;i<e_counter.length;i++){
+//   if(n_counter[i]==="Nplus"){
+//       n_plus_counter++;
+//  }
+//}
+
+
+
+//console.log(e_counter);
+//console.log(n_plus_counter);
+//console.log(n_counter);
 
 
 
@@ -91,13 +123,14 @@ $("#append-text").click(function(){
 			}});
 			      
 	
-	$("#history").append('<div class="row">'
+	$("#history").append('<br>'
+			     +'<div class="row">'
                                +'<div class="col-sm-3">'
                                  +'<img src="./girl.png" alt="ユーザー" class="icon">'
                                +'</div>'//question_image
 			       +'<div class="arrow_question col-sm-6" style="height:60px";>'
                                  +'<br>'
-                                 + systemReply
+			    　　 +$("#input").val()
                                +'</div>'
 			       +'<div class="blank col-sm-3">'
                                +'</div>'
@@ -105,7 +138,8 @@ $("#append-text").click(function(){
                              );
 
 
-        $("#history").append('<div class="row">'
+        $("#history").append('<br>'
+			     +'<div class="row">'
 			       +'<div class="blank col-sm-3">'
 			       +'</div>'
 			       +'<div class="arrow_answer col-sm-6" style="height:60px";>'
@@ -144,12 +178,3 @@ $("#append-text").click(function(){
 
 
 
-
-//$.ajax({
-//type: 'GET',
-//    url: '"http://shower.human.waseda.ac.jp:3300/rating/mn-with-word2vec/replies?text=" + $("#input").val() ',
-//    dataType: 'html',
-//    success: function(data) {
-//    $('#arrow_answer').html($(data));
-//}
-//  });

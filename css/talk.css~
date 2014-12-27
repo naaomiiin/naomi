@@ -38,7 +38,7 @@ padding-bottom:1em;
  
  
 .rightmenu .col2 {
-border:solid 4px black;
+//border:solid 4px black;
 }
 
 
@@ -188,6 +188,17 @@ p{
  font-size: 120%;
  margin: 15px;
 }
+/*
 img{
 margin: 15px;
+}
+*/
+
+.icon{
+  height:50px;
+}
+
+#history{
+  max-height:400px;
+  overflow-y:scroll;
 }
