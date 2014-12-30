@@ -6,6 +6,7 @@ console.log($("#input").val());*/
 //var bigfive = {"bigfive":{"e":"neg"},{"n":"pos"}, {"o":"neg"}, {"a":"pos"}, {"c":"neg"}};
 /* e: 外向性, n: 神経症傾向, o: 開放性, a: 協調性, c: 誠実性 , pos: ポジティブ, neg: ネガティブ*/
 
+$('#input').first().focus();
 
 new Chartist.Line('.ct-chart', {
 	labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
@@ -57,29 +58,69 @@ $chart.on('mousemove', function(event) {
 
 
 
+//var e_counter=[];
+//var n_counter=[];
+//var o_counter=[];
+//var a_counter=[];
+//var c_counter=[];
+
+//e_counter.push(e_result);
+//e_counter.push("Eminus");
+
+//for(var i=0;i<8;i++){
+//    e_counter.push("Eplus");
+//    n_counter.push("Nplus");
+//    o_counter.push("Oplus");
+//    a_counter.push("Aplus");
+//    c_counter.push("Cplus");
+//}
+
+
 var e_counter=[];
-e_counter.push("Eplus");
-e_counter.push("Eminus");
-for(var i=0;i<8;i++){
-    e_counter.push("Eplus");
-}
 var e_plus_counter=0;
+
+//e_counter.push(e_result);
+
+
 for(var i=0;i<e_counter.length;i++){
-    if(e_counter[i]==="Eplus"){
-	e_plus_counter++;
+    if(e_counter==="Eplus"){
+        e_plus_counter++;
     }
 }
 
-console.log(e_plus_counter);
+//console.log(e_plus_counter);
 
 
-console.log(e_counter);
+//for(var i=0;i<e_counter.length;i++){
+//    if(e_counter[i]==="Eplus"){
+//e_plus_counter++;
+//  }
+//}
+//for(var i=0;i<e_counter.length;i++){
+//   if(n_counter[i]==="Nplus"){
+//       n_plus_counter++;
+//  }
+//}
 
 
+//console.log(e_counter);
+//console.log(n_plus_counter);
+//console.log(n_counter);
+
+var taiwa_counter=0;
+var append_counter=0;
+
+var arr_question=[];
+var arr_answer=[];
 
 $("#append-text").click(function(){
+	$('#input').first().focus();
 	systemReply = "ダミー";
 	console.log($("#input").val());
+	taiwa_counter++;
+	console.log("対話回数:"+taiwa_counter+"回");
+	
+	
 	$.ajax({
 		type: 'GET',
 		    url:"http://shower.human.waseda.ac.jp:3300/rating/mn-with-word2vec/replies?text="+$("#input").val(),
@@ -87,37 +128,48 @@ $("#append-text").click(function(){
 		    dataType:"json",
 		    success: function(data){
 		    console.log("成功"+data);
-		    systemReply = data.triple[2].text
-			}});
-			      
+		    systemReply = data.triple[2].text;
+		    system = data.condition;
+		    //console.log(system);
+		    // if(system===no-result){
+		    //console.log("もう一度入力してね");
+		    //}
+		}
+		    //   error: function(){
+		    //console.log("もう一度入力してください");
+		    //}   
+		 });
 	
-	$("#history").append('<div class="row">'
+	
+		$("#history").append('<br>'
+			     +'<div class="row" id="question_row">'
                                +'<div class="col-sm-3">'
                                  +'<img src="./girl.png" alt="ユーザー" class="icon">'
                                +'</div>'//question_image
 			       +'<div class="arrow_question col-sm-6" style="height:60px";>'
                                  +'<br>'
-                                 + systemReply
-                               +'</div>'
+			    　　 +$("#input").val()
+			       +'</div>'
 			       +'<div class="blank col-sm-3">'
                                +'</div>'
                              +'</div>'// row
                              );
 
 
-        $("#history").append('<div class="row">'
+		$("#history").append('<br>'
+			     +'<div class="row" id="arrow_row">'
 			       +'<div class="blank col-sm-3">'
 			       +'</div>'
 			       +'<div class="arrow_answer col-sm-6" style="height:60px";>'
 			         +'<br>'
-			         + systemReply
+				 + systemReply
 			       +'</div>'
 			       +'<div class="col-sm-3">'
 			         +'<img src="./pc.png" alt="システム" class="icon">'
 			       +'</div>'// answer_image
 			     +'</div>'// row
                              );
-	
+		
 	$.ajax({
                 type: 'GET',
                     url:"http://shower.human.waseda.ac.jp:3300/bigfive/"+$("#input").val(),
@@ -137,19 +189,15 @@ $("#append-text").click(function(){
                     console.log("誠実性→"+c_result);
 		}});
 
-	$("#input").val("");	
+	$("#input").val("");
+
+
+	if(taiwa_counter<=3){
+	    //  var shifted = arr.shift();
+	    // console.log(arr_question);  	    
+	    //    delete arr_question[0];
+	    //delete arr_answer[0];
+	}
+	//	console.log(arr_question.length);
+
     });
-
-
-
-
-
-
-//$.ajax({
-//type: 'GET',
-//    url: '"http://shower.human.waseda.ac.jp:3300/rating/mn-with-word2vec/replies?text=" + $("#input").val() ',
-//    dataType: 'html',
-//    success: function(data) {
-//    $('#arrow_answer').html($(data));
-//}
-//  });
