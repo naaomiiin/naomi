@@ -8,6 +8,7 @@ console.log($("#input").val());*/
 
 $('#input').first().focus();
 
+
 new Chartist.Line('.ct-chart', {
 	labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
 	    series: [
@@ -110,16 +111,13 @@ for(var i=0;i<e_counter.length;i++){
 var taiwa_counter=0;
 var append_counter=0;
 
-var arr_question=[];
-var arr_answer=[];
-
 $("#append-text").click(function(){
 	$('#input').first().focus();
 	systemReply = "ダミー";
 	console.log($("#input").val());
 	taiwa_counter++;
 	console.log("対話回数:"+taiwa_counter+"回");
-	
+	$('#history').animate({ scrollTop: ($('#history')[0].scrollHeight) }, 'slow');  //自動スクロール
 	
 	$.ajax({
 		type: 'GET',
@@ -128,23 +126,20 @@ $("#append-text").click(function(){
 		    dataType:"json",
 		    success: function(data){
 		    console.log("成功"+data);
-		    systemReply = data.triple[2].text;
-		    // system = data.condition;
-		    //console.log(system);
-		    // if(system===no-result){
-		    //console.log("もう一度入力してね");
-		    //}
-		},
-		    error: function(data){
 		    system = data.condition;
-		    if(system===no-result){
-			console.log("もう一度入力してください");
-		    };
-		}});
+		    if(system === "no-result"){  //エラー処理
+			systemReply = "もう１度入力してね";
+		    }else{
+			systemReply = data.triple[2].text;
+		    }
+		},
+		    // error: function(data){
+		    //};
+		    });
 	    
 	    
 		$("#history").append('<br>'
-			     +'<div class="row" id="question_row">'
+			     +'<div class="row">'
                                +'<div class="col-sm-3">'
                                  +'<img src="./girl.png" alt="ユーザー" class="icon">'
                                +'</div>'//question_image
@@ -159,11 +154,11 @@ $("#append-text").click(function(){
 
 
 		$("#history").append('<br>'
-			     +'<div class="row" id="arrow_row">'
+			     +'<div class="row">'
 			       +'<div class="blank col-sm-3">'
 			       +'</div>'
 			       +'<div class="arrow_answer col-sm-6" style="height:60px";>'
-			         +'<br>'
+				 +'<br>'
 				 + systemReply
 			       +'</div>'
 			       +'<div class="col-sm-3">'
@@ -192,14 +187,4 @@ $("#append-text").click(function(){
 		}});
 
 	$("#input").val("");
-
-
-	if(taiwa_counter<=3){
-	    //  var shifted = arr.shift();
-	    // console.log(arr_question);  	    
-	    //    delete arr_question[0];
-	    //delete arr_answer[0];
-	}
-	//	console.log(arr_question.length);
-
     });
