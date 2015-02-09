@@ -46,7 +46,8 @@
 //clear:both;
 //float:left;
 //width:100%; /* ページ全体幅 */
-overflow:hidden;
+//overflow:hidden;
+min-height:500px;
 }
  
 .rightmenu {

@@ -10,36 +10,68 @@ $('#input').first().focus();
 
 var taiwa_counter=0;
 var append_counter=0;
-var e_plus_counter=0;
-var n_plus_counter=0;
-var o_plus_counter=0;
-var a_plus_counter=0;
-var c_plus_counter=0;
 
+/*
+var e_plus_counter=25;
+var n_plus_counter=25;
+var o_plus_counter=25;
+var a_plus_counter=25;
+var c_plus_counter=25;
+*/
+
+labels=[];
+for(var i=1;i<=30;i++){
+    labels.push(i);
+}
+data_e = [];
+for(var i=1;i<=30;i++){
+    data_e.push(0);
+}
+
+data_n = [];
+for(var i=1;i<=30;i++){
+    data_n.push(0);
+}
+
+data_o = [];
+for(var i=1;i<=30;i++){
+    data_o.push(0);
+}
+
+data_a = [];
+for(var i=1;i<=30;i++){
+    data_a.push(0);
+}
+
+data_c = [];
+for(var i=1;i<=30;i++){
+    data_c.push(0);
+}
 
 chart = new Chartist.Line('.ct-chart', {
 	//	labels: ['外向性', '神経症傾向', '開放性', '協調性', '誠実性'],
-	labels:[taiwa_counter],
+	labels:labels,
 	series: [
 {
     name: 'gaikousei',  //赤
-    data: [e_plus_counter]
+     data: data_e
+    
 },
 {
     name: 'sinkeisyoukeikou',  //赤                                                                                                                        
-    data: [n_plus_counter]
-},
+    data: data_n//[n_plus_counter]
+ },
 {
     name: 'kaihou',
-    data: [o_plus_counter]
+    data: data_o//[o_plus_counter]
 },
 {
     name: 'kyoutyousei',  //赤                                                                                                                       
-    data: [a_plus_counter]
+    data: data_a//[a_plus_counter]
 },
 {
     name: 'seijitusei',  //赤                                                                                                                       
-    data: [c_plus_counter]
+	data: data_c//[c_plus_counter]
 },
 
 		 ]
@@ -168,67 +200,85 @@ $("#append-text").click(function(){
 
                     var e_result = data.e.class;
 		    console.log("外向性→"+e_result);
+
+		    //外向性の更新
+		    data_e.shift();
 		    if(e_result==="Eplus"){
-			e_plus_counter++;
+			//data_e.push(e_plus_counter++;)
+			var last_index = data_e.length - 1;//配列の大きさが30の場合は29番目を指す
+			var new_value = data_e[last_index] + 1 ;
+			data_e.push(new_value);
+		    }else{
+			var last_index = data_e.length - 1;//配列の大きさが30の場合は29番目を指す
+			var new_value = data_e[last_index] ;
+			data_e.push(new_value);
 		    }
-		    console.log("Eplus:"+e_plus_counter+"回");
+		    
+		    //console.log("Eplus:"+e_plus_counter+"回");
 		    
 		    var n_result = data.n.class;
                     console.log("神経症傾向→"+n_result);
 		    if(n_result==="Nplus"){
-			n_plus_counter++;
+			//n_plus_counter++;
                     }
-                    console.log("Nplus:"+n_plus_counter+"回");
+                    //console.log("Nplus:"+n_plus_counter+"回");
 		    
 		    var o_result = data.o.class;
-                    console.log("開放性→"+o_result);
+                    //console.log("開放性→"+o_result);
 		    if(o_result==="Oplus"){
-			o_plus_counter++;
+			//o_plus_counter++;
                     }
-                    console.log("Oplus:"+o_plus_counter+"回");
+                    //console.log("Oplus:"+o_plus_counter+"回");
 		    
 		    var a_result = data.a.class;
-                    console.log("協調性→"+a_result);
+                    //console.log("協調性→"+a_result);
 		    if(a_result==="Aplus"){
-			a_plus_counter++;
+			//a_plus_counter++;
                     }
-                    console.log("Aplus:"+a_plus_counter+"回");
+                    //console.log("Aplus:"+a_plus_counter+"回");
 		    
 		    var c_result = data.c.class;
-                    console.log("誠実性→"+c_result);
+                    //console.log("誠実性→"+c_result);
 		    if(c_result==="Cplus"){
-			c_plus_counter++;
+			//c_plus_counter++;
                     }
-                    console.log("Cplus:"+c_plus_counter+"回");
+                    //console.log("Cplus:"+c_plus_counter+"回");
 		}});
        
 	$("#taiwa_count").text("対話回数 "+taiwa_counter+" 回");
 	$("#input").val("");
 	
+	
 
 	chart = new Chartist.Line('.ct-chart', {
 		//      labels: ['外向性', '神経症傾向', '開放性', '協調性', '誠実性'],                                                                               
-		labels:[taiwa_counter],
+		//labels:[taiwa_counter],
+		labels: labels,
 		series: [
 	{
 	    name: 'gaikousei',
-	    data: [e_plus_counter]
+	    //data: [e_plus_counter]
+	    data: data_e
 	},
 	{
 	    name: 'sinkeisyoukeikou',
-	    data: [n_plus_counter]
+	    //data: [n_plus_counter]
+	    data: [25,26,25]
 	},
 	{
 	    name: 'kaihou',
-	    data: [o_plus_counter]
+	    //data: [o_plus_counter]
+	    data: [25,26,26]
 	},
 	{
 	    name: 'kyoutyousei',
-	    data: [a_plus_counter]
+	    //data: [a_plus_counter]
+	    data: [25,26,26]
 	},
 	{
 	    name: 'seijitusei',
-	    data: [c_plus_counter]
+	    //data: [c_plus_counter]
+	    data: [25,26,26]
 	},
 
 			 ]
