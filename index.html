@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="chartist/chartist.min.css">
     <script src="chartist/chartist.min.js"></script>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-   
+
   </head>
   <body>
     <div id="header"></div>
@@ -19,7 +19,9 @@
       <div class="container">
 	<div class="row">
 	  <div class="col-sm-6"> <!-- カラム 1 ここから -->
-	    
+	    <br>
+	    <span id="taiwa_count"></span>
+	    <br>
 	    <div id="history">
 	    </div>
     	    <br>
@@ -33,9 +35,12 @@
     	  </div> <!-- カラム 1 ここまで -->
 	  
 	  <div class="col2 col-sm-6"><!-- カラム 2 ここから -->
-	   
-	    <div class="ct-chart ct-perfect-fourth"></div>
-
+	    <br>
+	    <font size="4"><p align="center">ユーザのパーソナリティ</p></font>
+	    <font size="1"><p align="left">対話回数に対してポジティブと判定された割合（%）</p>
+	    <div class="ct-chart ct-perfect-fourth" id="chart" style="background-color:#ffebcd"></div>
+	    <p align="right" id="bottom">BigFive尺度</p>
+	    
 	  </div><!-- カラム 2 ここまで -->
 	</div>
       </div>

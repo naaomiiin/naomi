@@ -8,20 +8,28 @@ console.log($("#input").val());*/
 
 $('#input').first().focus();
 
+var taiwa_counter=0;
+var append_counter=0;
+var e_plus_counter=0;
+var n_plus_counter=0;
+var o_plus_counter=0;
+var a_plus_counter=0;
+var c_plus_counter=0;
 
-new Chartist.Line('.ct-chart', {
-	labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-	    series: [
-		     {
-			 name: 'Fibonacci sequence',
-			     data: [1, 2, 3, 5, 8, 13, 40, 32, 10, 18]
-			     },
-		     {
-			 name: 'Golden section',
-			     data: [1, 12, 20, 8, 6, 11, 40, 20, 7, 26]
-			     }
-		     ]
-	    });
+
+chart = new Chartist.Line('.ct-chart', {
+	labels: ['外向性', '神経症傾向', '開放性', '協調性', '誠実性'],
+	series: [
+{
+    name: 'Fibonacci sequence',  //赤
+    data: [e_plus_counter, n_plus_counter, o_plus_counter, a_plus_counter, c_plus_counter]
+}
+		 ]
+    },{
+	//	seriesBarDistance: 1.0,
+	low: 0,
+	high: 100
+    });
 
 var easeOutQuad = function (x, t, b, c, d) {
     return -c * (t /= d) * (t - 2) + b;
@@ -57,66 +65,13 @@ $chart.on('mousemove', function(event) {
 		    });
     });
 
-
-
-//var e_counter=[];
-//var n_counter=[];
-//var o_counter=[];
-//var a_counter=[];
-//var c_counter=[];
-
-//e_counter.push(e_result);
-//e_counter.push("Eminus");
-
-//for(var i=0;i<8;i++){
-//    e_counter.push("Eplus");
-//    n_counter.push("Nplus");
-//    o_counter.push("Oplus");
-//    a_counter.push("Aplus");
-//    c_counter.push("Cplus");
-//}
-
-
-var e_counter=[];
-var e_plus_counter=0;
-
-//e_counter.push(e_result);
-
-
-for(var i=0;i<e_counter.length;i++){
-    if(e_counter==="Eplus"){
-        e_plus_counter++;
-    }
-}
-
-//console.log(e_plus_counter);
-
-
-//for(var i=0;i<e_counter.length;i++){
-//    if(e_counter[i]==="Eplus"){
-//e_plus_counter++;
-//  }
-//}
-//for(var i=0;i<e_counter.length;i++){
-//   if(n_counter[i]==="Nplus"){
-//       n_plus_counter++;
-//  }
-//}
-
-
-//console.log(e_counter);
-//console.log(n_plus_counter);
-//console.log(n_counter);
-
-var taiwa_counter=0;
-var append_counter=0;
-
 $("#append-text").click(function(){
 	$('#input').first().focus();
 	systemReply = "ダミー";
 	console.log($("#input").val());
 	taiwa_counter++;
 	console.log("対話回数:"+taiwa_counter+"回");
+	//	$('#chart')[0].contentDocument.location.reload(true)
 	$('#history').animate({ scrollTop: ($('#history')[0].scrollHeight) }, 'slow');  //自動スクロール
 	
 	$.ajax({
@@ -125,7 +80,7 @@ $("#append-text").click(function(){
 		    async:false,
 		    dataType:"json",
 		    success: function(data){
-		    console.log("成功"+data);
+		    console.log("成功");
 		    system = data.condition;
 		    if(system === "no-result"){  //エラー処理
 			systemReply = "もう１度入力してね";
@@ -174,17 +129,62 @@ $("#append-text").click(function(){
                     dataType:"json",
                     success: function(data){
                     console.log("bigfive成功"+data);
+
                     var e_result = data.e.class;
 		    console.log("外向性→"+e_result);
+		    if(e_result==="Eplus"){
+			e_plus_counter++;
+		    }
+		    console.log("Eplus:"+e_plus_counter+"回");
+		    
 		    var n_result = data.n.class;
                     console.log("神経症傾向→"+n_result);
+		    if(n_result==="Nplus"){
+			n_plus_counter++;
+                    }
+                    console.log("Nplus:"+n_plus_counter+"回");
+		    
 		    var o_result = data.o.class;
                     console.log("開放性→"+o_result);
+		    if(o_result==="Oplus"){
+			o_plus_counter++;
+                    }
+                    console.log("Oplus:"+o_plus_counter+"回");
+		    
 		    var a_result = data.a.class;
                     console.log("協調性→"+a_result);
+		    if(a_result==="Aplus"){
+			a_plus_counter++;
+                    }
+                    console.log("Aplus:"+a_plus_counter+"回");
+		    
 		    var c_result = data.c.class;
                     console.log("誠実性→"+c_result);
+		    if(c_result==="Cplus"){
+			c_plus_counter++;
+                    }
+                    console.log("Cplus:"+c_plus_counter+"回");
 		}});
-
+       
+	$("#taiwa_count").text("対話回数 "+taiwa_counter+" 回");
 	$("#input").val("");
-    });
+	
+	chart = new Chartist.Line('.ct-chart', {
+		labels: ['外向性', '神経症傾向', '開放性', '協調性', '誠実性'],
+		series: [
+	{
+	    name: 'Fibonacci sequence',  //赤                                                                                                               
+	    data: [e_plus_counter/taiwa_counter*100, n_plus_counter/taiwa_counter*100, o_plus_counter/taiwa_counter*100, a_plus_counter/taiwa_counter*100, c_plus_counter/taiwa_counter*100]
+	}
+                     ]
+		 },{
+		low: 0,
+		high:100,
+		//high:Math.max(e_plus_counter+1, n_plus_counter+1, o_plus_counter+1, a_plus_counter+1, c_plus_counter+1,3),
+		//axisX: {
+		//  scaleMinSpace: 100,
+		    // font-size: 12
+		//}
+	    });
+});
+
