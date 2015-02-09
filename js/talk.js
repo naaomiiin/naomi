@@ -18,18 +18,36 @@ var c_plus_counter=0;
 
 
 chart = new Chartist.Line('.ct-chart', {
-	labels: ['外向性', '神経症傾向', '開放性', '協調性', '誠実性'],
+	//	labels: ['外向性', '神経症傾向', '開放性', '協調性', '誠実性'],
+	labels:[taiwa_counter],
 	series: [
 {
-    name: 'Fibonacci sequence',  //赤
-    data: [e_plus_counter, n_plus_counter, o_plus_counter, a_plus_counter, c_plus_counter]
-}
+    name: 'gaikousei',  //赤
+    data: [e_plus_counter]
+},
+{
+    name: 'sinkeisyoukeikou',  //赤                                                                                                                        
+    data: [n_plus_counter]
+},
+{
+    name: 'kaihou',
+    data: [o_plus_counter]
+},
+{
+    name: 'kyoutyousei',  //赤                                                                                                                       
+    data: [a_plus_counter]
+},
+{
+    name: 'seijitusei',  //赤                                                                                                                       
+    data: [c_plus_counter]
+},
+
 		 ]
-    },{
-	//	seriesBarDistance: 1.0,
-	low: 0,
-	high: 100
-    });
+	    },{
+    //	seriesBarDistance: 1.0,
+    //      low: 0,
+				  //				  high: 100
+				  });
 
 var easeOutQuad = function (x, t, b, c, d) {
     return -c * (t /= d) * (t - 2) + b;
@@ -64,6 +82,24 @@ $chart.on('mousemove', function(event) {
 		    top: (event.offsetY || event.originalEvent.layerY) - $toolTip.height() - 40
 		    });
     });
+
+
+$ (function(){
+	$ (".content:not('.active + .content')").hide();
+	$(".menu").hover(function(){
+		$ (this).addClass("hover")
+		    },
+	    function(){
+		$(this).removeClass("hover")
+		    });
+	$ (".menu").click(function(){
+		$(".menu").removeClass("active");
+		$ (this).addClass("active");
+		$(".content:not('.active + .content')").fadeOut();
+		$ (".active + .content").fadeIn();
+	    });
+    });
+
 
 $("#append-text").click(function(){
 	$('#input').first().focus();
@@ -169,22 +205,39 @@ $("#append-text").click(function(){
 	$("#taiwa_count").text("対話回数 "+taiwa_counter+" 回");
 	$("#input").val("");
 	
+
 	chart = new Chartist.Line('.ct-chart', {
-		labels: ['外向性', '神経症傾向', '開放性', '協調性', '誠実性'],
+		//      labels: ['外向性', '神経症傾向', '開放性', '協調性', '誠実性'],                                                                               
+		labels:[taiwa_counter],
 		series: [
 	{
-	    name: 'Fibonacci sequence',  //赤                                                                                                               
-	    data: [e_plus_counter/taiwa_counter*100, n_plus_counter/taiwa_counter*100, o_plus_counter/taiwa_counter*100, a_plus_counter/taiwa_counter*100, c_plus_counter/taiwa_counter*100]
-	}
-                     ]
-		 },{
-		low: 0,
-		high:100,
-		//high:Math.max(e_plus_counter+1, n_plus_counter+1, o_plus_counter+1, a_plus_counter+1, c_plus_counter+1,3),
-		//axisX: {
-		//  scaleMinSpace: 100,
-		    // font-size: 12
-		//}
+	    name: 'gaikousei',
+	    data: [e_plus_counter]
+	},
+	{
+	    name: 'sinkeisyoukeikou',
+	    data: [n_plus_counter]
+	},
+	{
+	    name: 'kaihou',
+	    data: [o_plus_counter]
+	},
+	{
+	    name: 'kyoutyousei',
+	    data: [a_plus_counter]
+	},
+	{
+	    name: 'seijitusei',
+	    data: [c_plus_counter]
+	},
+
+			 ]
+            },{
+				//      low: 0,
+		//                              high: 100                                                                                   
 	    });
-});
+    });
+
+	//	    data: [e_plus_counter/taiwa_counter*100, n_plus_counter/taiwa_counter*100, o_plus_counter/taiwa_counter*100, a_plus_counter/taiwa_counter*100, c_plus_counter/taiwa_counter*100]
+	
 
