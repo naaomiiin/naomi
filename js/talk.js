@@ -49,37 +49,33 @@ for(var i=1;i<=30;i++){
 }
 
 chart = new Chartist.Line('.ct-chart', {
-	//	labels: ['外向性', '神経症傾向', '開放性', '協調性', '誠実性'],
 	labels:labels,
 	series: [
 {
-    name: 'gaikousei',  //赤
+    name: 'gaikousei',
      data: data_e
     
 },
 {
-    name: 'sinkeisyoukeikou',  //赤                                                                                                                        
-    data: data_n//[n_plus_counter]
+    name: 'sinkeisyoukeikou',
+    data: data_n
  },
 {
     name: 'kaihou',
-    data: data_o//[o_plus_counter]
+    data: data_o
 },
 {
-    name: 'kyoutyousei',  //赤                                                                                                                       
-    data: data_a//[a_plus_counter]
+    name: 'kyoutyousei',
+    data: data_a
 },
 {
-    name: 'seijitusei',  //赤                                                                                                                       
-	data: data_c//[c_plus_counter]
+    name: 'seijitusei',
+	data: data_c
 },
 
 		 ]
 	    },{
-    //	seriesBarDistance: 1.0,
-    //      low: 0,
-				  //				  high: 100
-				  });
+			  });
 
 var easeOutQuad = function (x, t, b, c, d) {
     return -c * (t /= d) * (t - 2) + b;
@@ -116,7 +112,7 @@ $chart.on('mousemove', function(event) {
     });
 
 
-$ (function(){
+$ (function(){    //タブ
 	$ (".content:not('.active + .content')").hide();
 	$(".menu").hover(function(){
 		$ (this).addClass("hover")
@@ -139,8 +135,8 @@ $("#append-text").click(function(){
 	console.log($("#input").val());
 	taiwa_counter++;
 	console.log("対話回数:"+taiwa_counter+"回");
-	//	$('#chart')[0].contentDocument.location.reload(true)
 	$('#history').animate({ scrollTop: ($('#history')[0].scrollHeight) }, 'slow');  //自動スクロール
+	$('#rireki').animate({ scrollTop: ($('#rireki')[0].scrollHeight) }, 'slow');
 	
 	$.ajax({
 		type: 'GET',
@@ -156,10 +152,8 @@ $("#append-text").click(function(){
 			systemReply = data.triple[2].text;
 		    }
 		},
-		    // error: function(data){
-		    //};
 		    });
-	    
+	
 	    
 		$("#history").append('<br>'
 			     +'<div class="row">'
@@ -197,7 +191,8 @@ $("#append-text").click(function(){
                     dataType:"json",
                     success: function(data){
                     console.log("bigfive成功"+data);
-
+		    
+		    //外向性
                     var e_result = data.e.class;
 		    console.log("外向性→"+e_result);
 
@@ -205,89 +200,139 @@ $("#append-text").click(function(){
 		    data_e.shift();
 		    if(e_result==="Eplus"){
 			//data_e.push(e_plus_counter++;)
-			var last_index = data_e.length - 1;//配列の大きさが30の場合は29番目を指す
+			var last_index = data_e.length - 1;
 			var new_value = data_e[last_index] + 1 ;
 			data_e.push(new_value);
 		    }else{
-			var last_index = data_e.length - 1;//配列の大きさが30の場合は29番目を指す
+			var last_index = data_e.length - 1;
 			var new_value = data_e[last_index] ;
 			data_e.push(new_value);
 		    }
 		    
-		    //console.log("Eplus:"+e_plus_counter+"回");
-		    
+		    //神経症傾向
 		    var n_result = data.n.class;
                     console.log("神経症傾向→"+n_result);
+		    
+		    //神経症傾向の更新
 		    if(n_result==="Nplus"){
-			//n_plus_counter++;
+			var last_index = data_n.length - 1;
+			var new_value = data_n[last_index] + 1 ;
+                        data_n.push(new_value);
+                    }else{
+                        var last_index = data_n.length - 1;
+                        var new_value = data_n[last_index] ;
+                        data_n.push(new_value);
                     }
-                    //console.log("Nplus:"+n_plus_counter+"回");
-		    
+
+
+		    //開放性
 		    var o_result = data.o.class;
-                    //console.log("開放性→"+o_result);
-		    if(o_result==="Oplus"){
-			//o_plus_counter++;
-                    }
-                    //console.log("Oplus:"+o_plus_counter+"回");
+                    console.log("開放性→"+o_result);
 		    
+		    //開放性の更新
+		    if(o_result==="Oplus"){
+			var last_index = data_o.length - 1;
+			var new_value = data_o[last_index] + 1 ;
+                        data_o.push(new_value);
+                    }else{
+                        var last_index = data_o.length - 1;
+			var new_value = data_o[last_index] ;
+			data_o.push(new_value);
+                    }
+
+		    //協調性
 		    var a_result = data.a.class;
                     //console.log("協調性→"+a_result);
-		    if(a_result==="Aplus"){
-			//a_plus_counter++;
-                    }
-                    //console.log("Aplus:"+a_plus_counter+"回");
 		    
+		    //協調性の更新
+		    if(a_result==="Aplus"){
+			var last_index = data_a.length - 1;
+			var new_value = data_a[last_index] + 1 ;
+                        data_a.push(new_value);
+                    }else{
+                        var last_index = data_a.length - 1;
+			var new_value = data_a[last_index] ;
+			data_a.push(new_value);
+                    }
+
+		    
+		    //誠実性
 		    var c_result = data.c.class;
                     //console.log("誠実性→"+c_result);
+		   
+		    //誠実性の更新
 		    if(c_result==="Cplus"){
-			//c_plus_counter++;
+			var last_index = data_c.length - 1;
+			var new_value = data_c[last_index] + 1 ;
+                        data_c.push(new_value);
+                    }else{
+                        var last_index = data_c.length - 1;
+			var new_value = data_c[last_index] ;
+			data_c.push(new_value);
                     }
-                    //console.log("Cplus:"+c_plus_counter+"回");
+
+		    //対話履歴タブ
+		    chat_log = function(text){
+			console.log(text);
+			$("#chat_log").append('<div>'+text+'</div>');
+		    };
+		    
+		    chat_log(taiwa_counter+"回目");
+		    chat_log("ユーザ："+$("#input").val());
+		    chat_log("システム："+systemReply);
+		    chat_log("外向性："+e_result);
+		    chat_log("神経症傾向："+n_result);
+		    chat_log("開放性："+o_result);
+		    chat_log("協調性："+a_result);
+		    chat_log("誠実性："+c_result);
+		    chat_log("***********************************");
 		}});
-       
+	
 	$("#taiwa_count").text("対話回数 "+taiwa_counter+" 回");
 	$("#input").val("");
 	
-	
 
 	chart = new Chartist.Line('.ct-chart', {
-		//      labels: ['外向性', '神経症傾向', '開放性', '協調性', '誠実性'],                                                                               
-		//labels:[taiwa_counter],
 		labels: labels,
 		series: [
 	{
 	    name: 'gaikousei',
-	    //data: [e_plus_counter]
 	    data: data_e
 	},
 	{
 	    name: 'sinkeisyoukeikou',
-	    //data: [n_plus_counter]
-	    data: [25,26,25]
+	    data: data_n
 	},
 	{
 	    name: 'kaihou',
-	    //data: [o_plus_counter]
-	    data: [25,26,26]
+	    data: data_o
 	},
 	{
 	    name: 'kyoutyousei',
-	    //data: [a_plus_counter]
-	    data: [25,26,26]
+	    data: data_a
 	},
 	{
 	    name: 'seijitusei',
-	    //data: [c_plus_counter]
-	    data: [25,26,26]
+	    data: data_c
 	},
 
 			 ]
             },{
-				//      low: 0,
-		//                              high: 100                                                                                   
+		//      low: 0,
+		//      high: 100                                                                                   
 	    });
-    });
+    });;
 
-	//	    data: [e_plus_counter/taiwa_counter*100, n_plus_counter/taiwa_counter*100, o_plus_counter/taiwa_counter*100, a_plus_counter/taiwa_counter*100, c_plus_counter/taiwa_counter*100]
-	
+		
 
+//chat_log = function(text){
+//  console.log(text);
+//  $("#chat_log").append('<div>'+text+'</div>');
+    //$("#chat_log").append(text);
+//};
+   
+//chat_log($("#input").val());
+
+//$("#input").val());
+//taiwa_counter++;
+//console.log("対話回数:"+taiwa_counter+"回");
