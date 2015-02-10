@@ -35,10 +35,10 @@
 	 height:450px;
 	 border:#7E8260 2px solid;
 	 background:#BFC68F;
-	// background-image: url("dot2.gif"); 
 	 top:32px;
 	 left:0;
-	 padding:10px;
+	 padding-left:10px;
+	 padding-right:10px;
 	 position:absolute;
 	 border-radius: 5px;
 }
@@ -229,10 +229,8 @@ div#header{
  width: 100%;
  margin-top: 50px;
 }
-p{
-// font-size: 100%;
- margin: 1px;
-}
+
+
 bottom{
 margin: 3px;
 font-size: 70%;
@@ -256,4 +254,13 @@ margin: 15px;
 #rireki{
   max-height:420px;
   overflow-y:scroll;
+}
+
+#graph_title{
+margin-top:-5px;
+margin-bottom:-1px;
+}
+
+#graph_tate{
+margin-bottom:-1px;
 }

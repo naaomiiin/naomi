@@ -277,7 +277,7 @@ $("#append-text").click(function(){
 			$("#chat_log").append('<div>'+text+'</div>');
 		    };
 		    
-		    chat_log(taiwa_counter+"回目");
+		    chat_log(" — "+taiwa_counter+"回目 — ");
 		    chat_log("ユーザ："+$("#input").val());
 		    chat_log("システム："+systemReply);
 		    chat_log("外向性："+e_result);
