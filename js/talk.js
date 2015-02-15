@@ -53,8 +53,7 @@ chart = new Chartist.Line('.ct-chart', {
 	series: [
 {
     name: 'gaikousei',
-     data: data_e
-    
+     data: data_e    
 },
 {
     name: 'sinkeisyoukeikou',
@@ -92,15 +91,15 @@ $chart.on('mouseenter', '.ct-point', function() {
 	var $point = $(this),
 	    value = $point.attr('ct:value'),
 	    seriesName = $point.parent().attr('ct:series-name');
-
-	$point.animate({'stroke-width': '50px'}, 300, easeOutQuad);
+	    
+	$point.animate({'stroke-width': '14px'}, 200, easeOutQuad);
 	$toolTip.html(seriesName + '<br>' + value).show();
     });
 
 $chart.on('mouseleave', '.ct-point', function() {
 	var $point = $(this);
 
-	$point.animate({'stroke-width': '20px'}, 300, easeOutQuad);
+	$point.animate({'stroke-width': '8px'}, 200, easeOutQuad);
 	$toolTip.hide();
     });
 
@@ -132,9 +131,7 @@ $ (function(){    //タブ
 $("#append-text").click(function(){
 	$('#input').first().focus();
 	systemReply = "ダミー";
-	console.log($("#input").val());
 	taiwa_counter++;
-	console.log("対話回数:"+taiwa_counter+"回");
 	$('#history').animate({ scrollTop: ($('#history')[0].scrollHeight) }, 'slow');  //自動スクロール
 	$('#rireki').animate({ scrollTop: ($('#rireki')[0].scrollHeight) }, 'slow');
 	
@@ -194,8 +191,7 @@ $("#append-text").click(function(){
 		    
 		    //外向性
                     var e_result = data.e.class;
-		    console.log("外向性→"+e_result);
-
+		    
 		    //外向性の更新
 		    data_e.shift();
 		    if(e_result==="Eplus"){
@@ -211,8 +207,7 @@ $("#append-text").click(function(){
 		    
 		    //神経症傾向
 		    var n_result = data.n.class;
-                    console.log("神経症傾向→"+n_result);
-		    
+                    		    
 		    //神経症傾向の更新
 		    if(n_result==="Nplus"){
 			var last_index = data_n.length - 1;
@@ -227,8 +222,7 @@ $("#append-text").click(function(){
 
 		    //開放性
 		    var o_result = data.o.class;
-                    console.log("開放性→"+o_result);
-		    
+                    		    
 		    //開放性の更新
 		    if(o_result==="Oplus"){
 			var last_index = data_o.length - 1;
@@ -242,8 +236,7 @@ $("#append-text").click(function(){
 
 		    //協調性
 		    var a_result = data.a.class;
-                    //console.log("協調性→"+a_result);
-		    
+                    		    
 		    //協調性の更新
 		    if(a_result==="Aplus"){
 			var last_index = data_a.length - 1;
@@ -258,8 +251,7 @@ $("#append-text").click(function(){
 		    
 		    //誠実性
 		    var c_result = data.c.class;
-                    //console.log("誠実性→"+c_result);
-		   
+                    		   
 		    //誠実性の更新
 		    if(c_result==="Cplus"){
 			var last_index = data_c.length - 1;
@@ -273,7 +265,7 @@ $("#append-text").click(function(){
 
 		    //対話履歴タブ
 		    chat_log = function(text){
-			console.log(text);
+			//console.log(text);
 			$("#chat_log").append('<div>'+text+'</div>');
 		    };
 		    

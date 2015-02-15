@@ -4,43 +4,58 @@
 	      width:508px;
 	      height:380px;
 	      position:relative;
-	      margin:10px auto;
+	      margin:10px;
+	      margin-top:12px;
 	      clear:both;
- }
+	       
+}
 .menu{
 	width:120px;
 	height:35px;
-	background:#E3EAAB;
+	background:#E5E8BB;
 	float:left;
 	list-style:none;
-	padding:8px 0 0;
-	margin-left:2px;
+	padding:6px;
+	padding-bottom:1px;
+	margin-left:4px;
 	text-align:center;
 	display:block;
 	cursor: pointer;
-	color:#6B655D;
+	color:#7E8260;
 	border-top-left-radius: 7px;
 	border-top-right-radius: 7px;
-}
+	border-top:#CED1A9 2px solid;
+	border-left:#CED1A9 2px solid;
+	border-right:#CED1A9 2px solid;
+	//box-shadow:2px 2px 7px rgba(0,0,0,0.3),
+        }
 .menu:first-child {
-		  margin-left:80px;
+		  margin-left:-0.5px;
 }
-.active, .hover {
+.active,.hover {
+	 position:relative;
 	 background:#BFC68F;
-	//background-image: url("dot2.gif");
-	 //font-weight:bold;
+	 border-top:#6B655D 2px solid;
+	 border-left:#7E8260 2px solid;
+	 border-right:#7E8260 2px solid;
+         z-index:2;
 }
 .content {
 	 width:520px;
 	 height:450px;
+	//border:#BFC68F 2px solid;
 	 border:#7E8260 2px solid;
 	 background:#BFC68F;
-	 top:32px;
+	 top:33px;
 	 left:0;
 	 padding-left:10px;
 	 padding-right:10px;
 	 position:absolute;
-	 border-radius: 5px;
+	 border-top-right-radius: 5px;
+         border-bottom-left-radius: 5px;
+         border-bottom-right-radius: 5px;
+	 box-shadow:5px 5px 7px rgba(0,0,0,0.3);
+	 z-index:1;
 }
 
 
@@ -56,7 +71,7 @@ min-height:500px;
  
 .rightmenu {
 background:#fccbff; /* 右カラム背景色 */
-background-image: url("dot1.gif");
+background-image: url("dot.png");
  background-repeat: repeat;
  text-align: center;
 }
@@ -68,7 +83,7 @@ background-image: url("dot1.gif");
 //position:relative;
 //right:100%;
 background:#cbe6ff; /* 左カラム背景色 */
-background-image: url("dot.gif");
+background-image: url("dot2.png");
  background-repeat: repeat;
  text-align: center;
 }
@@ -216,7 +231,7 @@ body{
  //margin:0;
  //padding:0;
  color:#666;
- background-image: url("dot2.gif");
+ background-image: url("dot1.png");
  background-repeat: repeat;
  text-align: center;
 }
@@ -227,7 +242,7 @@ header{
  }
 div#header{
  width: 100%;
- margin-top: 50px;
+ margin-top: 40px;
 }
 
 
@@ -254,7 +269,8 @@ margin: 15px;
 #rireki{
   max-height:420px;
   overflow-y:scroll;
-}
+  padding:10px;
+ }
 
 #graph_title{
 margin-top:-5px;
@@ -263,4 +279,8 @@ margin-bottom:-1px;
 
 #graph_tate{
 margin-bottom:-1px;
+}
+
+#ribbon{
+//margin-bottom:10px;
 }
