@@ -98,10 +98,10 @@ $(document).on('mouseenter', '.ct-point', function() {
     });
 
 $(document).on('mouseleave', '.ct-point', function() {
-	$tooltip.addClass('tooltip-hidden');
-    });
+$tooltip.addClass('tooltip-hidden');
+  });
 $(document).on('mousemove', '.ct-point', function(event) {
-	console.log(event);
+	//console.log(event);
 	$tooltip.css({
 		left: (event.offsetX || event.originalEvent.layerX) - $tooltip.width() / 2,
 		    top: (event.offsetY || event.originalEvent.layerY) - $tooltip.height() - 20
@@ -193,7 +193,6 @@ $("#append-text").click(function(){
 		    //外向性の更新
 		    data_e.shift();
 		    if(e_result==="Eplus"){
-			//data_e.push(e_plus_counter++;)
 			var last_index = data_e.length - 1;
 			var new_value = data_e[last_index] + 1 ;
 			data_e.push(new_value);
@@ -321,15 +320,3 @@ $("#append-text").click(function(){
 		    }
 		}
 	    })});
-
-//chat_log = function(text){
-//  console.log(text);
-//  $("#chat_log").append('<div>'+text+'</div>');
-    //$("#chat_log").append(text);
-//};
-   
-//chat_log($("#input").val());
-
-//$("#input").val());
-//taiwa_counter++;
-//console.log("対話回数:"+taiwa_counter+"回");
