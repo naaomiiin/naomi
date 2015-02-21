@@ -64,13 +64,13 @@
 //position:relative;
 //clear:both;
 //float:left;
-//width:100%; /* ãƒšãƒ¼ã‚¸å…¨ä½“å¹… */
+//width:100%; /* ’¥Ú’¡¼’¥¸’Á´’ÂÎ’Éı */
 //overflow:hidden;
 min-height:500px;
 }
  
 .rightmenu {
-background:#fccbff; /* å³ã‚«ãƒ©ãƒ èƒŒæ™¯è‰² */
+background:#fccbff; /* ’±¦’¥«’¥é’¥à’ÇØ’·Ê’¿§ */
 background-image: url("dot.png");
  background-repeat: repeat;
  text-align: center;
@@ -82,7 +82,7 @@ background-image: url("dot.png");
 //margin-left:-200px;
 //position:relative;
 //right:100%;
-background:#cbe6ff; /* å·¦ã‚«ãƒ©ãƒ èƒŒæ™¯è‰² */
+background:#cbe6ff; /* ’º¸’¥«’¥é’¥à’ÇØ’·Ê’¿§ */
 background-image: url("dot2.png");
  background-repeat: repeat;
  text-align: center;
@@ -299,7 +299,7 @@ margin-bottom:-1px;
   transition: opacity .1s ease-out;
 }
 
-.ct-chart .tooltip .ct-series.ct-series-a{
+.ct-chart .ct-series.ct-series-a .tooltip{
 background-color:#996C1E; 
 }
 

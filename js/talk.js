@@ -52,61 +52,59 @@ chart = new Chartist.Line('.ct-chart', {
 	labels:labels,
 	series: [
 {
-    name: 'gaikousei',
+    name: '外向性',
      data: data_e    
 },
 {
-    name: 'sinkeisyoukeikou',
+    name: '神経症傾向',
     data: data_n
  },
 {
-    name: 'kaihou',
+    name: '開放性',
     data: data_o
 },
 {
-    name: 'kyoutyousei',
+    name: '協調性',
     data: data_a
 },
 {
-    name: 'seijitusei',
+    name: '誠実性',
 	data: data_c
-},
-
-		 ]
+}]
 	    },{
+			      low: 0,
+				  axisX: {
+				  offset: 25,
+				      labelOffset: {
+				      y: 10
+					  }
+			      },
+				  axisY: {
+				  offset: 35,
+				      labelOffset: {
+				      x: -10,
+					  y: 3
+					  }
+			      }
 			  });
-
-var easeOutQuad = function (x, t, b, c, d) {
-    return -c * (t /= d) * (t - 2) + b;
-};
-
-var $chart = $('.ct-chart');
-
-var $toolTip = $chart
-    .append('<div class="tooltip"></div>')
-    .find('.tooltip')
-    .hide();
-
-$chart.on('mouseenter', '.ct-point', function() {
-	var $point = $(this),
-	    value = $point.attr('ct:value'),
-	    seriesName = $point.parent().attr('ct:series-name');
-	    
-	$point.animate({'stroke-width': '20px'}, 300, easeOutQuad);
-	$toolTip.html(seriesName + '<br>' + value).show();
+var $tooltip = $('<div class="tooltip tooltip-hidden"></div>').appendTo($('.ct-chart'));
+ 
+$(document).on('mouseenter', '.ct-point', function() {
+	var seriesName = $(this).closest('.ct-series').attr('ct:series-name'),
+	    value = $(this).attr('ct:value');
+  
+	$tooltip.text(seriesName + ': ' + value);
+	$tooltip.removeClass('tooltip-hidden');
     });
 
-$chart.on('mouseleave', '.ct-point', function() {
-	var $point = $(this);
-
-	$point.animate({'stroke-width': '10px'}, 300, easeOutQuad);
-	$toolTip.hide();
+$(document).on('mouseleave', '.ct-point', function() {
+	$tooltip.addClass('tooltip-hidden');
     });
-
-$chart.on('mousemove', function(event) {
-	$toolTip.css({
-		left: (event.offsetX || event.originalEvent.layerX) - $toolTip.width() / 2 - 10,
-		    top: (event.offsetY || event.originalEvent.layerY) - $toolTip.height() - 40
+$(document).on('mousemove', '.ct-point', function(event) {
+	console.log(event);
+	$tooltip.css({
+		left: (event.offsetX || event.originalEvent.layerX) - $tooltip.width() / 2,
+		    top: (event.offsetY || event.originalEvent.layerY) - $tooltip.height() - 20
 		    });
     });
 
@@ -285,37 +283,44 @@ $("#append-text").click(function(){
 	
 
 	chart = new Chartist.Line('.ct-chart', {
-		labels: labels,
+		labels:labels,
 		series: [
 	{
-	    name: 'gaikousei',
+	    name: '外向性',
 	    data: data_e
 	},
 	{
-	    name: 'sinkeisyoukeikou',
+	    name: '神経症傾向',
 	    data: data_n
 	},
 	{
-	    name: 'kaihou',
+	    name: '開放性',
 	    data: data_o
 	},
 	{
-	    name: 'kyoutyousei',
+	    name: '協調性',
 	    data: data_a
 	},
 	{
-	    name: 'seijitusei',
+	    name: '誠実性',
 	    data: data_c
-	},
-
-			 ]
+	}]
             },{
-		//      low: 0,
-		//      high: 100                                                                                   
-	    });
-    });;
-
-		
+		low: 0,
+		axisX: {
+		    offset: 25,
+		    labelOffset: {
+			y: 10
+		    }
+		},
+		axisY: {
+		    offset: 35,
+		    labelOffset: {
+			x: -10,
+			y: 3
+		    }
+		}
+	    })});
 
 //chat_log = function(text){
 //  console.log(text);
