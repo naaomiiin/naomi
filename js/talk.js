@@ -92,14 +92,14 @@ $chart.on('mouseenter', '.ct-point', function() {
 	    value = $point.attr('ct:value'),
 	    seriesName = $point.parent().attr('ct:series-name');
 	    
-	$point.animate({'stroke-width': '14px'}, 200, easeOutQuad);
+	$point.animate({'stroke-width': '20px'}, 300, easeOutQuad);
 	$toolTip.html(seriesName + '<br>' + value).show();
     });
 
 $chart.on('mouseleave', '.ct-point', function() {
 	var $point = $(this);
 
-	$point.animate({'stroke-width': '8px'}, 200, easeOutQuad);
+	$point.animate({'stroke-width': '10px'}, 300, easeOutQuad);
 	$toolTip.hide();
     });
 
