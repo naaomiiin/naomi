@@ -153,7 +153,7 @@ $("#append-text").click(function(){
 		$("#history").append('<br>'
 			     +'<div class="row">'
                                +'<div class="col-sm-3">'
-                                 +'<img src="./girl.png" alt="ユーザー" class="icon">'
+                                 +'<img src="img/girl.png" alt="ユーザー" class="icon">'
                                +'</div>'//question_image
 			       +'<div class="arrow_question col-sm-6" style="height:60px";>'
                                  +'<br>'
@@ -174,7 +174,7 @@ $("#append-text").click(function(){
 				 + systemReply
 			       +'</div>'
 			       +'<div class="col-sm-3">'
-			         +'<img src="./pc.png" alt="システム" class="icon">'
+			         +'<img src="img/pc.png" alt="システム" class="icon">'
 			       +'</div>'// answer_image
 			     +'</div>'// row
                              );
