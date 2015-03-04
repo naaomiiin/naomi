@@ -72,21 +72,21 @@ chart = new Chartist.Line('.ct-chart', {
 	data: data_c
 }]
 	    },{
-			      low: 0,
-				  axisX: {
-				  offset: 25,
-				      labelOffset: {
-				      y: 10
-					  }
-			      },
-				  axisY: {
-				  offset: 35,
-				      labelOffset: {
-				      x: -10,
-					  y: 3
-					  }
-			      }
-			  });
+	low: 0,
+	axisX: {
+	    offset: 25,
+	    labelOffset: {
+		y: 10
+	    }
+	},
+	axisY: {
+	    offset: 35,
+	    labelOffset: {
+		x: -10,
+		y: 3
+	    }
+	}
+    });
 var $tooltip = $('<div class="tooltip tooltip-hidden"></div>').appendTo($('.ct-chart'));
  
 $(document).on('mouseenter', '.ct-point', function() {

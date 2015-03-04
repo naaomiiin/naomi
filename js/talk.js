@@ -49,7 +49,7 @@ for(var i=1;i<=30;i++){
 }
 
 chart = new Chartist.Line('.ct-chart', {
-	labels:labels,
+	labels:labels.reverse(),
 	series: [
 {
     name: '外向性',
@@ -109,6 +109,20 @@ $(document).on('mousemove', '.ct-point', function(event) {
     });
 
 
+//$(".ct-point").click(function(){  //ツールチップクリックイベント
+$('.ct-chart').on('click', '.ct-point', function() {
+	console.log("ツールチップクリック成功");
+	console.log(" — "+taiwa_counter+"回目 — ");
+	//console.log("ユーザ："+$("#input").val());
+	//console.log("システム："+systemReply);
+	//console.log("外向性："+e_result);
+	//console.log("神経症傾向："+n_result);
+	//console.log("開放性："+o_result);
+	//console.log("協調性："+a_result);
+	//console.log("誠実性："+c_result);	
+    });
+
+
 $ (function(){    //タブ
 	$ (".content:not('.active + .content')").hide();
 	$(".menu").hover(function(){
@@ -139,7 +153,7 @@ $("#append-text").click(function(){
 		    async:false,
 		    dataType:"json",
 		    success: function(data){
-		    console.log("成功");
+		    //		    console.log("成功");
 		    system = data.condition;
 		    if(system === "no-result"){  //エラー処理
 			systemReply = "もう１度入力してね";
@@ -185,7 +199,7 @@ $("#append-text").click(function(){
                     async:false,
                     dataType:"json",
                     success: function(data){
-                    console.log("bigfive成功"+data);
+		    //                    console.log("bigfive成功"+data);
 		    
 		    //外向性
                     var e_result = data.e.class;
@@ -315,7 +329,7 @@ $("#append-text").click(function(){
 		axisY: {
 		    offset: 35,
 		    labelOffset: {
-			x: -10,
+		x: -10,
 			y: 3
 		    }
 		}
