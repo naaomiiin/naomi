@@ -109,10 +109,9 @@ $(document).on('mousemove', '.ct-point', function(event) {
     });
 
 
-//$(".ct-point").click(function(){  //ツールチップクリックイベント
-$('.ct-chart').on('click', '.ct-point', function() {
-	console.log("ツールチップクリック成功");
-	console.log(" — "+taiwa_counter+"回目 — ");
+//$('.ct-chart').on('click', '.ct-point', function() {
+	//console.log("ツールチップクリック成功");
+	//console.log(" — "+taiwa_counter+"回目 — ");
 	//console.log("ユーザ："+$("#input").val());
 	//console.log("システム："+systemReply);
 	//console.log("外向性："+e_result);
@@ -120,7 +119,13 @@ $('.ct-chart').on('click', '.ct-point', function() {
 	//console.log("開放性："+o_result);
 	//console.log("協調性："+a_result);
 	//console.log("誠実性："+c_result);	
+//  });
+
+//$("foreignobject").on('click',function(){
+$('.ct-chart').on('click', '.ct-horizontal', function() {
+	console.log($(this,'span').text());
     });
+
 
 
 $ (function(){    //タブ
